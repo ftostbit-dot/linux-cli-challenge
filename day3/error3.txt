@@ -1,0 +1,6 @@
+## Error 3: chmod ไม่มีผลกับไฟล์ใน /mnt/c/
+- คำสั่งที่พิมพ์: chmod 600 secret_config.txt
+- ผลลัพธ์ที่คาด: permission เปลี่ยนเป็น -rw-------
+- ผลลัพธ์จริง: permission ยังเป็น -rwxrwxrwx เหมือนเดิม ไม่เปลี่ยน
+- สาเหตุ: ไฟล์อยู่บน /mnt/c/ (Windows NTFS ผ่าน WSL) ซึ่งไม่รองรับ Linux permission จริง chmod จึงไม่มีผล
+- บทเรียน: ต้องทำงานกับไฟล์ที่อยู่ใน Linux filesystem แท้ๆ (เช่น /home/Ftost/) ถึงจะทดสอบ permission ได้จริง
